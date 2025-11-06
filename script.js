@@ -1,6 +1,6 @@
 gsap.registerPlugin(ScrollTrigger);
 
-const frameCount = 200;
+const frameCount = 300;
 const currentFrame = index => (
   `images/male${String(index + 1).padStart(4, '0')}.png`
 );
@@ -31,7 +31,7 @@ gsap.to(imageSeq, {
     scrub: 0.3,
     trigger: "#main",      
     start: "top top",
-    end: "bottom+=5000 top",
+    // end: "bottom+=250 top",
   },
   onUpdate: render,
 });
@@ -53,3 +53,36 @@ window.addEventListener("resize", () => {
   canvas.height = window.innerHeight;
   render();
 });
+//  chat 
+
+
+//  slider code 
+const slides = document.querySelectorAll('.slide');
+let currentIndex = 0;
+
+
+document.getElementById('next').addEventListener('click', () => {
+  slides[currentIndex].classList.remove('active');
+  currentIndex = (currentIndex + 1) % slides.length;
+  slides[currentIndex].classList.add('active');
+});
+
+
+document.getElementById('prev').addEventListener('click', () => {
+  slides[currentIndex].classList.remove('active');
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  slides[currentIndex].classList.add('active');
+});
+
+
+setInterval(() => {
+  slides[currentIndex].classList.remove('active');
+  currentIndex = (currentIndex + 1) % slides.length;
+  slides[currentIndex].classList.add('active');
+}, 6000); 
+
+
+
+
+
+ 
